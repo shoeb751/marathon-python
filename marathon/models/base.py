@@ -40,6 +40,8 @@ class MarathonObject:
 
         :param dict attributes: object attributes from parsed response
         """
+        if "role" in attributes.keys():
+            attributes.pop("role")
         return cls(**{to_snake_case(k): v for k, v in attributes.items()})
 
     def to_json(self, minimal=True):
